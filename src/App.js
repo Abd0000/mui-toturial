@@ -1,5 +1,7 @@
 
 
+import Create from "pages/Create/Create";
+import Home from "pages/Home/Home";
 import Root from "pages/Root";
 import {
   createBrowserRouter,
@@ -12,17 +14,16 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
-      {/* <Route path="dashboard" element={<Dashboard />} /> */}
-      {/* ... etc. */}
+      <Route index element={<Home />} />
+      <Route path="create" element={<Create />} />
+      
     </Route>
   )
 );
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
