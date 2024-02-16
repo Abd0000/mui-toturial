@@ -1,52 +1,33 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { ClearOutlined, MenuOutlined } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Outlet } from "react-router-dom";
+import { Link } from "@mui/material";
 
 const Root = () => {
   return (
     <div>
-      <Typography
-        className="header"
-        gutterBottom={true}
-        variant="h4"
-        component={"p"}
-      >
-        {/* using the IconButton component to create a button with icon */}
-        <IconButton size="large" sx={{position:"absolute" , top:"10px", left: "10px"}}>
-          <MenuOutlined color="info" fontSize="large" />
-        </IconButton>
-        Header
-      </Typography>
-      {/* //using sx prop to style the typography component */}
-      {/* using properties to style the typography like padding , width ,bgcolor and display */}
-      <Typography 
-        sx={{ p: "10px", width: "100%", ml: "20px auto", mr: "20px auto" }}
-        p={"20px"}
-        bgcolor={"grey.200"}
-        display={"flex"}
-        justifyContent={"center"}
-        noWrap={false}
-        variant="h6"
-        component={"p"}
-        color={"secondary.main"} //using theme color to style the typography and it will change according to the theme( light or dark)
-      >
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam vitae
-        fugit voluptate nulla sunt. Nam in rem quisquam debitis inventore
-        asperiores ad culpa tempora, modi veritatis officia, vel saepe possimus?
-      </Typography>
-      {/* using button element and using the endIcont and StartIcon */}
-      <Button
-        variant="contained"
-        color="error"
-        sx={{ ml: "auto", mr: "auto", display: "flex", mt: "10px" }}
-        startIcon={<ClearOutlined />}
-      >
-        Delete
-      </Button>
+      {/* // The AppBar component is a wrapper for the Toolbar component.
+       The Toolbar component is a wrapper for the IconButton, Typography, and Button components.
+        The IconButton component is a wrapper for the MenuIcon component.
+         The Typography component is a wrapper for the h6 component.
+          The Button component is a wrapper for the h6 component. */}
+      <AppBar position="static">
+        <Toolbar>
 
+          {/* using the Link component to create a link to the Home page */}
+          <Link underline="none" color={"inherit"} flexGrow={1}>
+            My Expenses
+          </Link>
+
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+
+      </AppBar>
       <Outlet />
     </div>
   );
