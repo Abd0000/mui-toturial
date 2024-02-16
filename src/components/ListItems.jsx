@@ -1,71 +1,89 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import List from '@mui/material/List';
-import { CreateOutlined, HomeOutlined, LogoutOutlined, PersonOutlined, PowerSettingsNewOutlined } from '@mui/icons-material';
+import * as React from "react";
+
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import List from "@mui/material/List";
+import {
+  CreateOutlined,
+  HomeOutlined,
+  LogoutOutlined,
+  PersonOutlined,
+  PowerSettingsNewOutlined,
+} from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 const ListItems = () => {
+  const navigate = useNavigate();
   return (
-<Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      <nav aria-label="main mailbox folders">
-        <List sx={{color:'primary.main'}}>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <HomeOutlined  color='inherit'/>
-              </ListItemIcon>
-              <ListItemText primary="Home" />
-            </ListItemButton>
-          </ListItem>
-          <Divider />
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <CreateOutlined />
-              </ListItemIcon>
-              <ListItemText primary="Create" />
-            </ListItemButton>
-          </ListItem>
-          <Divider />
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <PersonOutlined />
-              </ListItemIcon>
-              <ListItemText primary="Profile" />
-            </ListItemButton>
-          </ListItem>
-          <Divider />
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <PowerSettingsNewOutlined />
-              </ListItemIcon>
-              <ListItemText primary="Settings" />
-            </ListItemButton>
-          </ListItem>
-          <Divider />
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <LogoutOutlined />
-              </ListItemIcon>
-              <ListItemText primary="LogOut" />
-            </ListItemButton>
-          </ListItem>
-          
-          
-          
+    <List>
+      <ListItem disablePadding>
+        <ListItemButton
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <ListItemIcon>
+            <HomeOutlined color="inherit" />
+          </ListItemIcon>
+          <ListItemText primary="Home" />
+        </ListItemButton>
+      </ListItem>
 
-        </List>
-      </nav>
-     
-    </Box>
-  )
-}
+      <ListItem disablePadding>
+        <ListItemButton
+          onClick={() => {
+            navigate("/create");
+          }}
+        >
+          <ListItemIcon>
+            <CreateOutlined />
+          </ListItemIcon>
+          <ListItemText primary="Create" />
+        </ListItemButton>
+      </ListItem>
 
-export default ListItems
+      <ListItem disablePadding>
+        <ListItemButton
+          onClick={() => {
+            navigate("/profile");
+          }}
+        >
+          <ListItemIcon>
+            <PersonOutlined />
+          </ListItemIcon>
+          <ListItemText primary="Profile" />
+        </ListItemButton>
+      </ListItem>
+
+      <ListItem disablePadding>
+        <ListItemButton
+          onClick={() => {
+            navigate("/settings");
+          }}
+        >
+          <ListItemIcon>
+            <PowerSettingsNewOutlined />
+          </ListItemIcon>
+          <ListItemText primary="Settings" />
+        </ListItemButton>
+      </ListItem>
+
+      <ListItem disablePadding>
+        <ListItemButton
+          onClick={() => {
+            navigate("/logout");
+          }}
+        >
+          <ListItemIcon>
+            <LogoutOutlined />
+          </ListItemIcon>
+          <ListItemText primary="LogOut" />
+        </ListItemButton>
+      </ListItem>
+    </List>
+  );
+};
+
+export default ListItems;
