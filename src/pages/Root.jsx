@@ -1,12 +1,7 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import { Outlet } from "react-router-dom";
-import { Link } from "@mui/material";
+import { Avatar, Link ,Typography,AppBar} from "@mui/material";
 
 const Root = () => {
   return (
@@ -18,15 +13,26 @@ const Root = () => {
           The Button component is a wrapper for the h6 component. */}
       <AppBar position="static">
         <Toolbar>
-
           {/* using the Link component to create a link to the Home page */}
-          <Link underline="none" color={"inherit"} flexGrow={1}>
+          <Link
+            href="/"
+            underline="none"
+            color={"inherit"}
+            flexGrow={1}
+            sx={{ ":hover": { fontSize: "large" } }}
+          >
             My Expenses
           </Link>
 
-          <Button color="inherit">Login</Button>
+          <Typography variant="body1" color="inherit" mr={1}>
+            NAME
+          </Typography>
+          <Avatar
+            alt="Remy Sharp"
+            src="./images\PhotoRoom-20231020_155127.png"
+            sx={{ width: 50, height: 50 }}
+          />
         </Toolbar>
-
       </AppBar>
       <Outlet />
     </div>
