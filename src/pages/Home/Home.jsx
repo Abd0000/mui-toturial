@@ -1,17 +1,29 @@
-import React from 'react'
-import './Home.css'
+import React from "react";
+import "./Home.css";
+import { Box, IconButton, Paper, Typography } from "@mui/material";
+import { ClearOutlined } from "@mui/icons-material";
 
 const Home = () => {
   return (
-    <div>
-     <h1>Welcome home</h1>
-     <h1>Welcome home</h1>
-     <h1>Welcome home</h1>
-     <h1>home</h1>
-     <h1>home</h1>
-     <h1>home</h1>
-    </div>
-  )
-}
+    <Box>
+      <Paper
+        sx={{
+          width: "366px",
+          display: "flex",
+          justifyContent: "space-between",
+          mt: "36px",
+          p: "10px",
+          position: "relative",
+        }}
+      >
+        <Typography sx={{ml:"16px",fontWeight:"5",fontSize:"1.3em"}} variant="h6">GYM</Typography>
+        <Typography sx={{mr: "16px",fontSize:"1.3em",opacity:"0.8",fontWeight:"500"}} variant="h6">$100</Typography>
+        <IconButton size="small" sx={{ position: "absolute", top: 0, right: 0}}>
+          <ClearOutlined fontSize="inherit"/>
+        </IconButton>
+      </Paper>
+    </Box>
+  );
+};
 
-export default Home
+export default Home;

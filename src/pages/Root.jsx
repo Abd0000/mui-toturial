@@ -9,7 +9,7 @@ const Root = () => {
     <div>
       <Navbar drawerWidth={drawerWidth} />
       <Sidebar drawerWidth={drawerWidth} />
-      <Box className="border" sx={{ml:`${drawerWidth}px`}}>
+      <Box  sx={{ml:`${drawerWidth}px`, display:"flex",alignItems:"center",justifyContent:"center",mt:"66px"}}>
         <Outlet />
       </Box>
     </div>
