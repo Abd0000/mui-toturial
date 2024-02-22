@@ -1,12 +1,38 @@
-import React from 'react'
-import './Create.css'
+import React from "react";
+import "./Create.css";
+import { Box, InputAdornment, TextField, Button } from "@mui/material";
+import { KeyboardArrowRightOutlined } from "@mui/icons-material";
 
 const Create = () => {
   return (
-    <div>
-      Createee
-    </div>
-  )
-}
+    <Box sx={{ display: "flex", flexDirection: "column", width: "366px" }} component={"form"}>
+      <TextField
+        fullWidth
+        label="Transaction"
+        id="outlined-start-adornment"
+        sx={{ mb: 1 }}
+        InputProps={{
+          startAdornment: <InputAdornment position="start">👉</InputAdornment>,
+        }}
+      />
+      
 
-export default Create
+      <TextField
+        fullWidth
+        label="Amount"
+        id="outlined-start-adornment"
+        sx={{ mb: 1 }}
+        
+        InputProps={{
+          startAdornment: <InputAdornment position="start">$</InputAdornment>,
+        }}
+      />
+      <Button sx={{ width: "80px" ,pl:"25px"}} variant="contained" color="primary">
+        Submit
+        <KeyboardArrowRightOutlined />
+      </Button>
+    </Box>
+  );
+};
+
+export default Create;

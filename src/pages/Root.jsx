@@ -9,7 +9,7 @@ const Root = () => {
     <div>
       <Navbar drawerWidth={drawerWidth} />
       <Sidebar drawerWidth={drawerWidth} />
-      <Box  sx={{ml:`${drawerWidth}px`, display:"flex",alignItems:"center",justifyContent:"center",mt:"66px"}}>
+      <Box  component={"main"} sx={{ml:`${drawerWidth}px`, display:"flex",alignItems:"center",justifyContent:"center",mt:"100px"}}>
         <Outlet />
       </Box>
     </div>
