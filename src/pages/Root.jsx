@@ -2,16 +2,16 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "components/Navbar";
 import Sidebar from "components/Sidebar";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 const drawerWidth = 240;
 const Root = () => {
   return (
     <div>
       <Navbar drawerWidth={drawerWidth} />
       <Sidebar drawerWidth={drawerWidth} />
-      <Container sx={{ml:`${drawerWidth}px`}}>
+      <Box className="border" sx={{ml:`${drawerWidth}px`}}>
         <Outlet />
-      </Container>
+      </Box>
     </div>
   );
 };
