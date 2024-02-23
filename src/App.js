@@ -21,11 +21,20 @@ const router = createBrowserRouter(
 );
 
 
-//variable to get store the theme status
+//variable to get store the theme status and adding a new color to the theme (ochre)
+// you can use this color in the theme.palette.ochre.main and so on
 const darkTheme = createTheme({
   palette: {
     mode: "light",
+    // @ts-ignore
+    bluee: {
+      main: '#1E88E5',
+      light: '#64B5F6',
+      dark: '#0D47A1',
+      contrastText: '#fff',
+    },
   },
+
 });
 
 
