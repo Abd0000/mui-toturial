@@ -1,13 +1,9 @@
-import {
-  Divider,
-  Drawer,
-  IconButton,
-} from "@mui/material";
+import {Drawer } from "@mui/material";
 import React from "react";
 import ListItems from "./ListItems";
-import { DarkModeOutlined } from "@mui/icons-material";
 
-const Sidebar = ({ drawerWidth }) => {
+
+const Sidebar = ({ drawerWidth, setMyMode }) => {
   return (
     <Drawer
       sx={{
@@ -21,21 +17,7 @@ const Sidebar = ({ drawerWidth }) => {
       variant="permanent"
       anchor="left"
     >
-      
-      <IconButton
-      size="small"
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "64px",
-          color: "primary.main",
-        }}
-      >
-        <DarkModeOutlined fontSize="large"/>
-      </IconButton>
-      <Divider />
-      <ListItems />
+      <ListItems setMyMode={setMyMode} />
     </Drawer>
   );
 };

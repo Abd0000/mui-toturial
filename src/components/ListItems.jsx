@@ -13,11 +13,38 @@ import {
   PowerSettingsNewOutlined,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { Brightness4Outlined, Brightness7Outlined } from "@mui/icons-material";
+import { Divider, IconButton, useTheme } from "@mui/material";
 
-const ListItems = () => {
+const ListItems = ({ setMyMode }) => {
+  //to get the theme status
+  const myMode = useTheme();
+
+  //to navigate to the different pages without reloading the page
   const navigate = useNavigate();
+
   return (
     <List>
+      <ListItem
+        disablePadding
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
+        <IconButton
+          sx={{ height: "55px", width: "55px" }}
+          onClick={() => {
+            setMyMode(myMode.palette.mode === "dark" ? "light" : "dark");
+          }}
+          color="inherit"
+        >
+          {myMode.palette.mode === "dark" ? (
+            <Brightness7Outlined sx={{ color: "orange" }} />
+          ) : (
+            <Brightness4Outlined />
+          )}
+        </IconButton>
+      </ListItem>
+      <Divider />
+
       <ListItem disablePadding>
         <ListItemButton
           onClick={() => {
