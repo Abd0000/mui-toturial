@@ -12,7 +12,8 @@ const drawerWidth = 240;
 
 
 const Root = () => {
-  const [myMode, setMyMode] = useState("light");
+
+  const [myMode, setMyMode] = useState(localStorage.getItem("mode") || "light"); //to get the theme status from the local storage
 
   const darkTheme = createTheme({
     palette: {

@@ -31,15 +31,24 @@ const ListItems = ({ setMyMode }) => {
       >
         <IconButton
           sx={{ height: "55px", width: "55px" }}
+
           onClick={() => {
+            //to change the theme status and store it in the local storage
+            localStorage.setItem(
+              "mode",
+              myMode.palette.mode === "dark" ? "light" : "dark"
+            );
+
+            //to change the theme status
             setMyMode(myMode.palette.mode === "dark" ? "light" : "dark");
           }}
           color="inherit"
         >
+          
           {myMode.palette.mode === "dark" ? (
             <Brightness7Outlined sx={{ color: "orange" }} />
           ) : (
-            <Brightness4Outlined />
+            <Brightness4Outlined /> ////to change the icon according to the theme status
           )}
         </IconButton>
       </ListItem>
