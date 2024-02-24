@@ -12,7 +12,7 @@ import {
   PersonOutlined,
   PowerSettingsNewOutlined,
 } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Brightness4Outlined, Brightness7Outlined } from "@mui/icons-material";
 import { Divider, IconButton, useTheme } from "@mui/material";
 
@@ -23,6 +23,9 @@ const ListItems = ({ setMyMode }) => {
   //to navigate to the different pages without reloading the page
   const navigate = useNavigate();
 
+  //to get the current location of the page
+  const currentLocation = useLocation();
+
   return (
     <List>
       <ListItem
@@ -31,7 +34,6 @@ const ListItems = ({ setMyMode }) => {
       >
         <IconButton
           sx={{ height: "55px", width: "55px" }}
-
           onClick={() => {
             //to change the theme status and store it in the local storage
             localStorage.setItem(
@@ -44,7 +46,6 @@ const ListItems = ({ setMyMode }) => {
           }}
           color="inherit"
         >
-          
           {myMode.palette.mode === "dark" ? (
             <Brightness7Outlined sx={{ color: "orange" }} />
           ) : (
@@ -54,7 +55,13 @@ const ListItems = ({ setMyMode }) => {
       </ListItem>
       <Divider />
 
-      <ListItem disablePadding>
+      <ListItem
+        disablePadding
+        sx={{
+          backgroundColor:
+            currentLocation.pathname === "/" ? "grey.main" : null,//to change the background color of the current page
+        }}
+      >
         <ListItemButton
           onClick={() => {
             navigate("/");
@@ -67,7 +74,13 @@ const ListItems = ({ setMyMode }) => {
         </ListItemButton>
       </ListItem>
 
-      <ListItem disablePadding>
+      <ListItem
+        disablePadding
+        sx={{
+          backgroundColor:
+            currentLocation.pathname === "/create" ? "grey.main" : null,
+        }}
+      >
         <ListItemButton
           onClick={() => {
             navigate("/create");
@@ -80,7 +93,13 @@ const ListItems = ({ setMyMode }) => {
         </ListItemButton>
       </ListItem>
 
-      <ListItem disablePadding>
+      <ListItem
+        disablePadding
+        sx={{
+          backgroundColor:
+            currentLocation.pathname === "/profile" ? "grey.main" : null,
+        }}
+      >
         <ListItemButton
           onClick={() => {
             navigate("/profile");
@@ -93,7 +112,13 @@ const ListItems = ({ setMyMode }) => {
         </ListItemButton>
       </ListItem>
 
-      <ListItem disablePadding>
+      <ListItem
+        disablePadding
+        sx={{
+          backgroundColor:
+            currentLocation.pathname === "/settings" ? "grey.main" : null,
+        }}
+      >
         <ListItemButton
           onClick={() => {
             navigate("/settings");
@@ -106,7 +131,13 @@ const ListItems = ({ setMyMode }) => {
         </ListItemButton>
       </ListItem>
 
-      <ListItem disablePadding>
+      <ListItem
+        disablePadding
+        sx={{
+          backgroundColor:
+            currentLocation.pathname === "/logout" ? "grey.main" : null,
+        }}
+      >
         <ListItemButton
           onClick={() => {
             navigate("/logout");

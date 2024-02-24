@@ -4,7 +4,7 @@ import Navbar from "components/Navbar";
 import Sidebar from "components/Sidebar";
 import { Box, CssBaseline } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { orange } from "@mui/material/colors";
+import { grey, orange } from "@mui/material/colors";
 const drawerWidth = 240;
 
 //variable to get store the theme status and adding a new color to the theme (ochre)
@@ -29,6 +29,10 @@ const Root = () => {
               light: "#87CEFA"
               , 
               dark: "#00BFFF"
+            },
+           grey:{
+              main: grey[300]
+  
             }
            
           }
@@ -38,6 +42,9 @@ const Root = () => {
               main:orange[500],
               light: orange[300],
               dark: orange[700]
+            },
+            grey:{
+              main: grey[800]
             }
           }),
     },
