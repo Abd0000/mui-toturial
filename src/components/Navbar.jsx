@@ -11,7 +11,7 @@ const Navbar = ({drawerWidth}) => {
               underline="none"
               color={"inherit"}
               flexGrow={1}
-              sx={{ "&:hover": { fontSize: "large" }, width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+              sx={{ "&:hover": { fontSize: "large" }, width: `calc(100% - ${drawerWidth}px)`, ml:{ xs:0,md: `${drawerWidth}px`}  }}
             >
               My Expenses
             </Link>

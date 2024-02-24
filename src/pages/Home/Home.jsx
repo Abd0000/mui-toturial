@@ -5,7 +5,15 @@ import { ClearOutlined } from "@mui/icons-material";
 
 const Home = () => {
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        
+      }}
+    >
       <Paper
         sx={{
           width: "366px",

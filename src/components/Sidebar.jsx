@@ -12,6 +12,10 @@ const Sidebar = ({ drawerWidth, setMyMode }) => {
         "& .MuiDrawer-paper": {
           width: drawerWidth,
           boxSizing: "border-box",
+          display:{
+            xs:"none",
+            md:"block"
+          }
         },
       }}
       variant="permanent"
