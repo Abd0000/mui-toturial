@@ -4,6 +4,7 @@ import Navbar from "components/Navbar";
 import Sidebar from "components/Sidebar";
 import { Box, CssBaseline } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { orange } from "@mui/material/colors";
 const drawerWidth = 240;
 
 //variable to get store the theme status and adding a new color to the theme (ochre)
@@ -13,19 +14,32 @@ const drawerWidth = 240;
 
 const Root = () => {
 
-  const [myMode, setMyMode] = useState(localStorage.getItem("mode") || "light"); //to get the theme status from the local storage
+  const [mode, setMyMode] = useState(localStorage.getItem("mode") || "light"); //to get the theme status from the local storage
 
   const darkTheme = createTheme({
     palette: {
       // @ts-ignore
-      mode: myMode,
-      // @ts-ignore
-      bluee: {
-        main: '#1E88E5',
-        light: '#64B5F6',
-        dark: '#0D47A1',
-        contrastText: '#fff',
-      },
+      mode,
+      ...(mode === 'light'
+        ? {
+            // palette values for light mode
+           bluee:{
+              main:"#1E90FF"
+              ,
+              light: "#87CEFA"
+              , 
+              dark: "#00BFFF"
+            }
+           
+          }
+        : {
+            // palette values for dark mode
+            bluee:{
+              main:orange[500],
+              light: orange[300],
+              dark: orange[700]
+            }
+          }),
     },
   
   });

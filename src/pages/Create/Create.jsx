@@ -33,8 +33,8 @@ const Create = () => {
         sx={{
           width: "80px",
           pl: "25px",
-          color: "bluee",
-          ":hover": { backgroundColor: "bluee.light" }, //here we are using the new color bluee
+          backgroundColor: "bluee.main",
+          "&:hover": { backgroundColor: "bluee.dark" }
         }}
         variant="contained"
       >
