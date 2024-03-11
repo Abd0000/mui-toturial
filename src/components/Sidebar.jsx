@@ -1,9 +1,14 @@
-import {Drawer } from "@mui/material";
+import { Drawer } from "@mui/material";
 import React from "react";
 import ListItems from "./ListItems";
 
-
-const Sidebar = ({ drawerWidth, setMyMode }) => {
+const Sidebar = ({
+  drawerWidth,
+  setMyMode,
+  noneOrBlock,
+  permOrTemp,
+  hidesidebar,
+}) => {
   return (
     <Drawer
       sx={{
@@ -12,14 +17,18 @@ const Sidebar = ({ drawerWidth, setMyMode }) => {
         "& .MuiDrawer-paper": {
           width: drawerWidth,
           boxSizing: "border-box",
-          display:{
-            xs:"none",
-            md:"block"
-          }
+          display: {
+            xs: noneOrBlock,
+            md: "block",
+          },
         },
       }}
-      variant="permanent"
+      variant={permOrTemp}
       anchor="left"
+      open={true}
+      onClose={() => {
+        hidesidebar();
+      }}
     >
       <ListItems setMyMode={setMyMode} />
     </Drawer>
