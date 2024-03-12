@@ -16,6 +16,34 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Brightness4Outlined, Brightness7Outlined } from "@mui/icons-material";
 import { Divider, IconButton, useTheme } from "@mui/material";
 
+const list = [
+  {
+    path: "/",
+    text: "Home",
+    icon: <HomeOutlined color="inherit" />,
+  },
+  {
+    path: "/create",
+    text: "Create",
+    icon: <CreateOutlined />,
+  },
+  {
+    path: "/profile",
+    text: "Profile",
+    icon: <PersonOutlined />,
+  },
+  {
+    path: "/settings",
+    text: "Settings",
+    icon: <PowerSettingsNewOutlined />,
+  },
+  {
+    path: "/logout",
+    text: "LogOut",
+    icon: <LogoutOutlined />,
+  },
+];
+
 const ListItems = ({ setMyMode }) => {
   //to get the theme status
   const myMode = useTheme();
@@ -55,100 +83,29 @@ const ListItems = ({ setMyMode }) => {
       </ListItem>
       <Divider />
 
-      <ListItem
-        disablePadding
-        sx={{
-          backgroundColor:
-            currentLocation.pathname === "/" ? "grey.main" : null,//to change the background color of the current page
-        }}
-      >
-        <ListItemButton
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          <ListItemIcon>
-            <HomeOutlined color="inherit" />
-          </ListItemIcon>
-          <ListItemText primary="Home" />
-        </ListItemButton>
-      </ListItem>
-
-      <ListItem
-        disablePadding
-        sx={{
-          backgroundColor:
-            currentLocation.pathname === "/create" ? "grey.main" : null,
-        }}
-      >
-        <ListItemButton
-          onClick={() => {
-            navigate("/create");
-          }}
-        >
-          <ListItemIcon>
-            <CreateOutlined />
-          </ListItemIcon>
-          <ListItemText primary="Create" />
-        </ListItemButton>
-      </ListItem>
-
-      <ListItem
-        disablePadding
-        sx={{
-          backgroundColor:
-            currentLocation.pathname === "/profile" ? "grey.main" : null,
-        }}
-      >
-        <ListItemButton
-          onClick={() => {
-            navigate("/profile");
-          }}
-        >
-          <ListItemIcon>
-            <PersonOutlined />
-          </ListItemIcon>
-          <ListItemText primary="Profile" />
-        </ListItemButton>
-      </ListItem>
-
-      <ListItem
-        disablePadding
-        sx={{
-          backgroundColor:
-            currentLocation.pathname === "/settings" ? "grey.main" : null,
-        }}
-      >
-        <ListItemButton
-          onClick={() => {
-            navigate("/settings");
-          }}
-        >
-          <ListItemIcon>
-            <PowerSettingsNewOutlined />
-          </ListItemIcon>
-          <ListItemText primary="Settings" />
-        </ListItemButton>
-      </ListItem>
-
-      <ListItem
-        disablePadding
-        sx={{
-          backgroundColor:
-            currentLocation.pathname === "/logout" ? "grey.main" : null,
-        }}
-      >
-        <ListItemButton
-          onClick={() => {
-            navigate("/logout");
-          }}
-        >
-          <ListItemIcon>
-            <LogoutOutlined />
-          </ListItemIcon>
-          <ListItemText primary="LogOut" />
-        </ListItemButton>
-      </ListItem>
+{/* //a function to map the list of items and display them in the sidebar */}
+      {list.map(item=>{
+        return(
+          <ListItem
+            disablePadding
+            sx={{
+              backgroundColor:
+                currentLocation.pathname === item.path ? "grey.main" : null, //to change the background color of the current page
+            }}
+          >
+            <ListItemButton
+              onClick={() => {
+                navigate(item.path);
+              }}
+            >
+              <ListItemIcon>
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText primary={item.text} />
+            </ListItemButton>
+          </ListItem>
+        )
+      })}
     </List>
   );
 };

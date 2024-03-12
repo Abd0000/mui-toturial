@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "components/Navbar";
 import Sidebar from "components/Sidebar";
 import { Box, CssBaseline } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { grey, orange } from "@mui/material/colors";
+import getDesignTokens from "styles/MyTheme";
 const drawerWidth = 240;
 
 //variable to get store the theme status and adding a new color to the theme (ochre)
@@ -14,36 +14,6 @@ const Root = () => {
   const [mode, setMyMode] = useState(localStorage.getItem("mode") || "light"); //to get the theme status from the local storage
   const [noneOrBlock, setNoneOrBlock] = useState("none"); //to get the display status of the sidebar
   const [permOrTemp, setPermOrTemp] = useState("permanent"); //to get the display status of the sidebar
-
-  const darkTheme = createTheme({
-    palette: {
-      // @ts-ignore
-      mode,
-      ...(mode === "light"
-        ? {
-            // palette values for light mode
-            bluee: {
-              main: "#1E90FF",
-              light: "#87CEFA",
-              dark: "#00BFFF",
-            },
-            grey: {
-              main: grey[300],
-            },
-          }
-        : {
-            // palette values for dark mode
-            bluee: {
-              main: orange[500],
-              light: orange[300],
-              dark: orange[700],
-            },
-            grey: {
-              main: grey[800],
-            },
-          }),
-    },
-  });
 
   const showsidebar = () => {
     setNoneOrBlock("block");
@@ -55,8 +25,13 @@ const Root = () => {
     setPermOrTemp("permanent");
   };
 
+  //function to change the theme status
+
+  // @ts-ignore
+  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <div>
         <Navbar drawerWidth={drawerWidth} showsidebar={showsidebar} />
