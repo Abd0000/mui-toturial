@@ -1,5 +1,6 @@
 import Create from "pages/Create/Create";
 import Home from "pages/Home/Home";
+import NotFound from "pages/NotFound/NotFound";
 import Root from "pages/Root";
 import {
   createBrowserRouter,
@@ -13,6 +14,8 @@ const router = createBrowserRouter(
     <Route path="/" element={<Root />}>
       <Route index element={<Home />} />
       <Route path="create" element={<Create />} />
+    {/* // if the path is not found, it will redirect to the NotFound page */}
+      <Route path="*" element={<NotFound />} /> 
     </Route>
   )
 );
