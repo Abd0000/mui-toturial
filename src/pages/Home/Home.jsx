@@ -10,7 +10,7 @@ const Home = () => {
     fetch("http://localhost:3100/mydata")
       .then((response) => response.json())
       .then((data) => setMydata(data));
-  }, []);
+  }, [mydata]);
 
   return (
     <Box
@@ -55,9 +55,7 @@ const Home = () => {
               onClick={() => {
                 fetch(`http://localhost:3100/mydata/${item.id}`, {
                   method: "DELETE",
-                }).then(() => {
-                  setMydata(mydata.filter((i) => i.id !== item.id));
-                });
+                })
               }}
               size="small"
               sx={{ position: "absolute", top: 0, right: 0 }}
