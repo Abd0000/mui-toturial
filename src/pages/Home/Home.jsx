@@ -11,8 +11,7 @@ const Home = () => {
       .then((response) => response.json())
       .then((data) => setMydata(data));
   }, []);
-  
-  
+
   return (
     <Box
       sx={{
@@ -22,44 +21,51 @@ const Home = () => {
         justifyContent: "center",
       }}
     >
-      {mydata.map(item=>{
-        return(
-<Paper
-        sx={{
-          width: "366px",
-          display: "flex",
-          justifyContent: "space-between",
-          p: "10px",
-          mb: "20px",
-          position: "relative",
-        }}
-      >
-        <Typography
-          sx={{ ml: "16px", fontWeight: "5", fontSize: "1.3em" }}
-          variant="h6"
-        >
-         {item.title}
-        </Typography>
-        <Typography
-          sx={{
-            mr: "16px",
-            fontSize: "1.3em",
-            opacity: "0.8",
-            fontWeight: "500",
-          }}
-          variant="h6"
-        >
-          ${item.amount}
-        </Typography>
-        <IconButton
-          size="small"
-          sx={{ position: "absolute", top: 0, right: 0 }}
-        >
-          <ClearOutlined fontSize="inherit" />
-        </IconButton>
-      </Paper>
-
-        )
+      {mydata.map((item) => {
+        return (
+          <Paper
+            key={item.id}
+            sx={{
+              width: "366px",
+              display: "flex",
+              justifyContent: "space-between",
+              p: "10px",
+              mb: "20px",
+              position: "relative",
+            }}
+          >
+            <Typography
+              sx={{ ml: "16px", fontWeight: "5", fontSize: "1.3em" }}
+              variant="h6"
+            >
+              {item.title}
+            </Typography>
+            <Typography
+              sx={{
+                mr: "16px",
+                fontSize: "1.3em",
+                opacity: "0.8",
+                fontWeight: "500",
+              }}
+              variant="h6"
+            >
+              ${item.amount}
+            </Typography>
+            <IconButton
+              onClick={() => {
+                fetch(`http://localhost:3100/mydata/${item.id}`, {
+                  method: "DELETE",
+                }).then(() => {
+                  setMydata(mydata.filter((i) => i.id !== item.id));
+                });
+              }}
+              size="small"
+              sx={{ position: "absolute", top: 0, right: 0 }}
+            >
+              <ClearOutlined fontSize="inherit" />
+            </IconButton>
+          </Paper>
+        );
       })}
     </Box>
   );
