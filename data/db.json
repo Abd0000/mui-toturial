@@ -1,5 +1,14 @@
 {
-    "mydata": [
-
-    ]
-  }
+  "mydata": [
+    {
+      "id": "19a5",
+      "title": "shopping",
+      "amount": 1500
+    },
+    {
+      "id": "7a65",
+      "title": "courses",
+      "amount": 2000
+    }
+  ]
+}

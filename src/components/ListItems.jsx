@@ -87,6 +87,7 @@ const ListItems = ({ setMyMode }) => {
       {list.map(item=>{
         return(
           <ListItem
+            key={item.path}
             disablePadding
             sx={{
               backgroundColor:

@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Create.css";
 import { Box, InputAdornment, TextField, Button } from "@mui/material";
 import { KeyboardArrowRightOutlined } from "@mui/icons-material";
 
 const Create = () => {
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState(0);
+  console.log(title, amount);
   return (
     <Box
       sx={{ display: "flex", flexDirection: "column", width: "366px" }}
       component={"form"}
     >
       <TextField
+        onChange={(e) => setTitle(e.target.value)}
         fullWidth
         label="Transaction"
         id="outlined-start-adornment"
@@ -20,6 +24,7 @@ const Create = () => {
       />
 
       <TextField
+        onChange={(e) => setAmount(Number(e.target.value))}
         fullWidth
         label="Amount"
         id="outlined-start-adornment"
@@ -30,11 +35,20 @@ const Create = () => {
       />
 
       <Button
+        onClick={(parms) =>
+          fetch("http://localhost:3100/mydata", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ title, amount }),
+          })
+        }
         sx={{
           width: "80px",
           pl: "25px",
           backgroundColor: "bluee.main",
-          "&:hover": { backgroundColor: "bluee.dark" }
+          "&:hover": { backgroundColor: "bluee.dark" },
         }}
         variant="contained"
       >
