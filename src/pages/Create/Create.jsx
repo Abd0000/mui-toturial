@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "./Create.css";
 import { Box, InputAdornment, TextField, Button } from "@mui/material";
 import { KeyboardArrowRightOutlined } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState(0);
-  console.log(title, amount);
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{ display: "flex", flexDirection: "column", width: "366px" }}
@@ -42,7 +44,7 @@ const Create = () => {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ title, amount }),
-          })
+          }).then(() => navigate("/"))
         }
         sx={{
           width: "80px",
