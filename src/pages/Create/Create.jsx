@@ -11,6 +11,8 @@ const Create = () => {
 
   return (
     <Box
+    noValidate
+    autoComplete="off"
       sx={{ display: "flex", flexDirection: "column", width: "366px" }}
       component={"form"}
     >

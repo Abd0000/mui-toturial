@@ -1,3 +1,24 @@
 {
-  "mydata": []
+  "mydata": [
+    {
+      "id": "e058",
+      "title": "shopping",
+      "amount": 300
+    },
+    {
+      "id": "3a50",
+      "title": "playstaion 5",
+      "amount": 500
+    },
+    {
+      "id": "0788",
+      "title": "clothes",
+      "amount": 200
+    },
+    {
+      "id": "7afb",
+      "title": "food",
+      "amount": 80
+    }
+  ]
 }
