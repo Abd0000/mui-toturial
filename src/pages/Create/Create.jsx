@@ -5,8 +5,10 @@ import { KeyboardArrowRightOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 const Create = () => {
+  //storing the data from the server
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState(0);
+  //useNavigate hook to navigate to the home page
   const navigate = useNavigate();
 
   return (
@@ -40,6 +42,7 @@ const Create = () => {
 
       <Button
         onClick={(parms) =>
+          //fetching the data from the server
           fetch("http://localhost:3100/mydata", {
             method: "POST",
             headers: {

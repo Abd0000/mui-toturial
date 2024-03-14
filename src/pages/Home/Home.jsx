@@ -4,13 +4,18 @@ import { Box, IconButton, Paper, Typography } from "@mui/material";
 import { ClearOutlined } from "@mui/icons-material";
 
 const Home = () => {
+  //storing the data from the server
   const [mydata, setMydata] = useState([]);
 
+  //fetching the data from the server
   useEffect(() => {
     fetch("http://localhost:3100/mydata")
       .then((response) => response.json())
       .then((data) => setMydata(data));
   }, [mydata]);
+
+  //total price of the items
+  let totalPrice = 0;
 
   return (
     <Box
@@ -22,6 +27,7 @@ const Home = () => {
       }}
     >
       {mydata.map((item) => {
+        totalPrice += item.amount;
         return (
           <Paper
             key={item.id}
@@ -55,7 +61,7 @@ const Home = () => {
               onClick={() => {
                 fetch(`http://localhost:3100/mydata/${item.id}`, {
                   method: "DELETE",
-                })
+                });
               }}
               size="small"
               sx={{ position: "absolute", top: 0, right: 0 }}
@@ -65,6 +71,7 @@ const Home = () => {
           </Paper>
         );
       })}
+      <Typography  mt={2} variant="h6">spent 👉 $ {totalPrice}</Typography>
     </Box>
   );
 };
