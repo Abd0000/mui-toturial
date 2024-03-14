@@ -14,6 +14,13 @@ const Home = () => {
       .then((data) => setMydata(data));
   }, []);
 
+  //deleting the item from the server
+  const handleDelete = (item) => {
+    fetch(`http://localhost:3100/mydata/${item.id}`, {
+      method: "DELETE",
+    }).then(() => setMydata(mydata.filter((i) => i.id !== item.id)));
+  };
+
   //total price of the items
   let totalPrice = 0;
 
@@ -58,11 +65,7 @@ const Home = () => {
               ${item.amount}
             </Typography>
             <IconButton
-              onClick={() => {
-                fetch(`http://localhost:3100/mydata/${item.id}`, {
-                  method: "DELETE",
-                }).then(()=>setMydata(mydata.filter((i) => i.id !== item.id)));
-              }}
+              onClick={() => handleDelete(item)}
               size="small"
               sx={{ position: "absolute", top: 0, right: 0 }}
             >
@@ -71,7 +74,9 @@ const Home = () => {
           </Paper>
         );
       })}
-      <Typography  mt={2} variant="h6">spent 👉 $ {totalPrice}</Typography>
+      <Typography mt={2} variant="h6">
+        spent 👉 $ {totalPrice}
+      </Typography>
     </Box>
   );
 };

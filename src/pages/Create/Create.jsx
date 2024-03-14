@@ -11,6 +11,17 @@ const Create = () => {
   //useNavigate hook to navigate to the home page
   const navigate = useNavigate();
 
+  const handleCreate = () => {
+    //fetching the data from the server
+    fetch("http://localhost:3100/mydata", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title, amount }),
+    }).then(() => navigate("/"));
+  }
+
   return (
     <Box
     noValidate
@@ -41,15 +52,8 @@ const Create = () => {
       />
 
       <Button
-        onClick={(parms) =>
-          //fetching the data from the server
-          fetch("http://localhost:3100/mydata", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ title, amount }),
-          }).then(() => navigate("/"))
+        onClick={() =>
+          handleCreate()
         }
         sx={{
           width: "80px",

@@ -83,9 +83,9 @@ const ListItems = ({ setMyMode }) => {
       </ListItem>
       <Divider />
 
-{/* //a function to map the list of items and display them in the sidebar */}
-      {list.map(item=>{
-        return(
+      {/* //a function to map the list of items and display them in the sidebar */}
+      {list.map((item) => {
+        return (
           <ListItem
             key={item.path}
             disablePadding
@@ -99,13 +99,11 @@ const ListItems = ({ setMyMode }) => {
                 navigate(item.path);
               }}
             >
-              <ListItemIcon>
-                {item.icon}
-              </ListItemIcon>
+              <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
-        )
+        );
       })}
     </List>
   );
